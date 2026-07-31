@@ -10,7 +10,12 @@ fn main() {
     // let num = lines.next().unwrap().parse::<i32>().unwrap();
     let line = lines.next().unwrap().trim();
 
-    let words: HashSet<_> = line.split_whitespace().collect();
+    let sum = line
+        .split_whitespace()
+        .map(|num| num.parse::<i32>().unwrap())
+        .filter(|num| num % 2 == 0)
+        .map(|num| num * num)
+        .sum::<i32>();
 
-    println!("{}", words.len());
+    println!("{}", sum);
 }
