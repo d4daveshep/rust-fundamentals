@@ -7,13 +7,14 @@ fn main() {
 
     // let name = lines.next().unwrap().trim();
     // let age = lines.next().unwrap().trim();
-    let num = lines.next().unwrap().parse::<i32>().unwrap();
+    // let num = lines.next().unwrap().parse::<i32>().unwrap();
+    let line = lines.next().unwrap().trim();
 
-    let squared = square(num);
+    let length = count(line);
 
-    println!("{}", squared);
+    println!("{}", length);
 }
 
-fn square(num: i32) -> i32 {
-    num * num
+fn count(input: &str) -> usize {
+    input.len()
 }
