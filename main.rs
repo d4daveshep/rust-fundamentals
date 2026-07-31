@@ -1,4 +1,4 @@
-use std::io::Read;
+use std::{collections::HashSet, io::Read};
 
 fn main() {
     let mut input = String::new();
@@ -10,17 +10,7 @@ fn main() {
     // let num = lines.next().unwrap().parse::<i32>().unwrap();
     let line = lines.next().unwrap().trim();
 
-    let nums: Vec<_> = line
-        .split_whitespace()
-        .map(|num| num.parse::<i32>().unwrap())
-        .collect();
+    let words: HashSet<_> = line.split_whitespace().collect();
 
-    let mut max = std::i32::MIN;
-    for num in nums {
-        if num > max {
-            max = num;
-        }
-    }
-
-    println!("{}", max);
+    println!("{}", words.len());
 }
