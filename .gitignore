@@ -1,4 +1,5 @@
-.prog
-*.class
-__pycache__/
-node_modules/
+# Build output
+/target/
+
+# Cargo lock file (keep for binaries, ignore for libraries)
+# Cargo.lock
