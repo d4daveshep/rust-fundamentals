@@ -7,22 +7,14 @@ fn main() {
 
     // let name = lines.next().unwrap().trim();
     // let age = lines.next().unwrap().trim();
-    let num = lines.next().unwrap().parse::<i32>().unwrap();
+    let num = lines.next().unwrap().parse::<u64>().unwrap();
 
-    // if num % 15 == 0 {
-    //     println!("FizzBuzz")
-    // } else if num % 3 == 0 {
-    //     println!("Fizz")
-    // } else if num % 5 == 0 {
-    //     println!("Buzz")
-    // } else {
-    //     println!("{num}")
-    // }
+    let range = 1..=num;
+    // let sum = range.sum::<u64>();
 
-    match (num % 3 == 0, num % 5 == 0) {
-        (true, true) => println!("FizzBuzz"),
-        (true, false) => println!("Fizz"),
-        (false, true) => println!("Buzz"),
-        (false, false) => println!("{}", num),
+    let mut sum = 0_u64;
+    for n in range {
+        sum += n;
     }
+    println!("{}", sum);
 }
