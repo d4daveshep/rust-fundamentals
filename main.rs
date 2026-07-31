@@ -7,14 +7,13 @@ fn main() {
 
     // let name = lines.next().unwrap().trim();
     // let age = lines.next().unwrap().trim();
-    let num = lines.next().unwrap().parse::<u64>().unwrap();
+    let num = lines.next().unwrap().parse::<i32>().unwrap();
 
-    let range = 1..=num;
-    // let sum = range.sum::<u64>();
+    let squared = square(num);
 
-    let mut sum = 0_u64;
-    for n in range {
-        sum += n;
-    }
-    println!("{}", sum);
+    println!("{}", squared);
+}
+
+fn square(num: i32) -> i32 {
+    num * num
 }
