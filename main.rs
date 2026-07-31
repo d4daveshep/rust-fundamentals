@@ -1,31 +1,41 @@
-use std::{collections::HashSet, io::Read};
-
-struct Point {
-    x: i32,
-    y: i32,
+enum Light {
+    Red,
+    Yellow,
+    Green,
 }
 
-impl Point {
-    fn distance_sq(&self, other: &Self) -> i32 {
-        (self.x - other.x).pow(2) + (self.y - other.y).pow(2)
+impl Light {
+    fn next(&self) -> Self {
+        match self {
+            Light::Red => Light::Green,
+            Light::Yellow => Light::Red,
+            Light::Green => Light::Yellow,
+        }
+    }
+
+    fn name(&self) -> &str {
+        match self {
+            Light::Red => "red",
+            Light::Yellow => "yellow",
+            Light::Green => "green",
+        }
     }
 }
 
 fn main() {
-    let lines: Vec<_> = (0..4)
-        .map(|_| {
-            let mut s = String::new();
-            std::io::stdin().read_line(&mut s).unwrap();
-            s.trim().parse::<i32>().unwrap()
-        })
-        .collect();
-    let a = Point {
-        x: lines[0],
-        y: lines[1],
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
+
+    let line = input.trim();
+
+    let current = match line {
+        "red" => Light::Red,
+        "yellow" => Light::Yellow,
+        "green" => Light::Green,
+        _ => Light::Green,
     };
-    let b = Point {
-        x: lines[2],
-        y: lines[3],
-    };
-    println!("{}", a.distance_sq(&b));
+
+    let next = current.next();
+
+    println!("{}", next.name());
 }
