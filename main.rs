@@ -10,11 +10,17 @@ fn main() {
     // let num = lines.next().unwrap().parse::<i32>().unwrap();
     let line = lines.next().unwrap().trim();
 
-    let length = count(line);
+    let nums: Vec<_> = line
+        .split_whitespace()
+        .map(|num| num.parse::<i32>().unwrap())
+        .collect();
 
-    println!("{}", length);
-}
+    let mut max = i32::MIN;
+    for num in nums {
+        if num > max {
+            max = num;
+        }
+    }
 
-fn count(input: &str) -> usize {
-    input.len()
+    println!("{}", max);
 }
