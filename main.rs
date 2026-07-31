@@ -15,7 +15,7 @@ fn main() {
         .map(|num| num.parse::<i32>().unwrap())
         .collect();
 
-    let mut max = i32::MIN;
+    let mut max = std::i32::MIN;
     for num in nums {
         if num > max {
             max = num;
